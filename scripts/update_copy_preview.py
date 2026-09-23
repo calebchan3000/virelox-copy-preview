@@ -144,7 +144,7 @@ about_intro[1].string = (
     "Today, we use that experience to build educational YouTube channels around our clients' expertise. "
     "You bring the knowledge and point of view; we handle the work from research through publishing."
 )
-about.select_one("#about-header").insert_after(
+about.select_one("#about-header .model-inner").append(
     fragment(
         about,
         """

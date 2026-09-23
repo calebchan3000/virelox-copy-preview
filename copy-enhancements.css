@@ -90,38 +90,35 @@
 }
 
 .about-feature {
-  position: relative;
-  width: min(calc(100% - 48px), 1080px);
-  margin: 0 auto 56px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 430px);
+  margin: 28px auto 0;
   overflow: hidden;
   border: 1px solid rgba(124, 58, 237, .12);
-  border-radius: 26px;
-  background: #dce5ed;
-  box-shadow: 0 18px 42px rgba(22, 15, 43, .10);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(22, 15, 43, .06);
+  text-align: left;
 }
 
 .about-feature img {
   display: block;
-  width: 100%;
+  flex: 0 0 170px;
+  width: 170px;
   height: auto;
 }
 
 .about-feature figcaption {
-  position: absolute;
-  bottom: 22px;
-  left: 22px;
   display: grid;
-  gap: 2px;
-  padding: 11px 15px;
-  border: 1px solid rgba(255, 255, 255, .28);
-  border-radius: 12px;
-  background: rgba(24, 20, 32, .84);
-  color: #fff;
-  backdrop-filter: blur(10px);
+  gap: 4px;
+  padding-right: 14px;
+  color: #191323;
 }
 
-.about-feature figcaption strong { font-size: 14px; }
-.about-feature figcaption span { color: rgba(255, 255, 255, .78); font-size: 12px; }
+.about-feature figcaption strong { font-size: 15px; }
+.about-feature figcaption span { color: #6d6577; font-size: 12px; }
 
 #story .model-inner {
   max-width: 1080px;
@@ -272,15 +269,9 @@
 @media (max-width: 760px) {
   .founder-quote-card { margin-top: 4px; }
   #about-header { padding-top: 105px; padding-bottom: 28px; }
-  .about-feature { margin-bottom: 42px; border-radius: 18px; }
-  .about-feature figcaption {
-    position: static;
-    padding: 10px 14px;
-    border: 0;
-    border-radius: 0;
-    background: #1d1727;
-    backdrop-filter: none;
-  }
+  .about-feature { gap: 10px; margin-top: 24px; }
+  .about-feature img { flex-basis: 45%; width: 45%; }
+  .about-feature figcaption { padding-right: 8px; }
   #story .model-inner { padding: 34px 22px; }
   .story-steps,
   .channel-logo-grid { grid-template-columns: 1fr; }
