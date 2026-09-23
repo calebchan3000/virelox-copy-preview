@@ -63,13 +63,9 @@ set_text(home, "#about h2", "Built on our own channels. Focused on yours.")
 set_text(
     home,
     "#about .about-content > p:nth-of-type(2)",
-    "Virelox grew from channels we founded and operated into a team of researchers, writers, editors, spokespeople, and channel managers. Today, we bring that experience to founders, experts, and companies with something useful to teach. Client channels are built around your voice or a named expert from your team.",
+    "We learned YouTube by founding and operating our own channels. Today, our researchers, writers, editors, spokespeople, and channel managers bring that experience to founders and teams with something useful to teach. Your channel is built around your voice or a named expert from your team.",
 )
-set_text(
-    home,
-    ".partner-logos-label",
-    "We've worked with 15+ brands, including",
-)
+home.select_one("#about .partner-logos").decompose()
 set_text(home, "#categories .section-header > p:nth-of-type(2)", "Four stages, repeated each week. What we learn from each video informs the next one.")
 steps = home.select("#categories .category-card .category-content > p:last-child")
 assert len(steps) == 4
@@ -114,17 +110,14 @@ home.select_one("#about .about-inner").append(
     fragment(
         home,
         """
-        <div class="about-proof-card" aria-label="Caleb Chan and channels he founded or built">
-          <div class="about-proof-top">
-            <img class="about-proof-photo" src="./team/caleb-x.jpg" alt="Caleb Chan, founder of Virelox Media" width="320" height="320">
-            <div class="about-proof-name"><strong>Caleb Chan</strong><span>Founder, Virelox Media</span></div>
+        <aside class="founder-quote-card" aria-label="A note from Virelox Media founder Caleb Chan">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <blockquote>I've spent eight years building channels across finance, fitness, and other niches. Going viral is a skill: understand the audience, find the right idea, and make a video that delivers on its promise. Virelox brings that experience and our production team to your channel. Your expertise leads; we handle the work behind it.</blockquote>
+          <div class="quote-attribution">
+            <img src="./team/caleb-x.jpg" alt="" width="56" height="56">
+            <div><strong>Caleb Chan</strong><span>Founder, Virelox Media</span></div>
           </div>
-          <p>Channels built from the inside</p>
-          <div class="about-proof-links">
-            <a href="https://www.youtube.com/@casgains" target="_blank" rel="noopener noreferrer"><img src="./channels/casgains.jpg" alt="" width="36" height="36"><span>Casgains Academy</span><span aria-hidden="true">↗</span></a>
-            <a href="https://www.youtube.com/@calebpowerlifter" target="_blank" rel="noopener noreferrer"><img src="./channels/caleb.jpg" alt="" width="36" height="36"><span>Caleb Chan</span><span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
+        </aside>
         """,
     )
 )
@@ -144,18 +137,7 @@ about_intro[1].string = (
     "Today, we use that experience to build educational YouTube channels around our clients' expertise. "
     "You bring the knowledge and point of view; we handle the work from research through publishing."
 )
-highlight_bodies = about.select("#how-we-work .highlight-body")
-assert len(highlight_bodies) == 4
-for node, copy in zip(
-    highlight_bodies,
-    [
-        "You record one planned session each week, typically around an hour. Our team handles the production work between sessions.",
-        "Every channel has an identifiable voice: you, a founder, an educator, or a named expert from your team.",
-        "We research, write, edit, and package the videos. The expertise, stories, and perspective come from you.",
-        "We focus on videos people choose to find and watch, then use what we learn to improve the channel over time.",
-    ],
-):
-    node.string = copy
+about.select_one("#how-we-work").decompose()
 set_text(about, "#story .model-statement", "From one finance channel to a YouTube production team.")
 story = about.select_one("#story .story-copy")
 assert story is not None
@@ -173,7 +155,7 @@ story.append(
           <article class="story-step">
             <span class="story-step-number">02 / Creator partnerships</span>
             <h3>Matching brands with audiences</h3>
-            <p>Through Casgains Media, we connected <strong>15+ brands</strong>, including Public.com, ExpressVPN, Interactive Brokers, and LMNT, with creators whose audiences were a natural fit for their products. Together, those partnerships represented <strong>seven figures in cumulative brand deal volume</strong> and helped brands increase conversions through relevant YouTube integrations.</p>
+            <p>Through Casgains Media, we connected <strong>15+ brands</strong> with creators whose audiences were a natural fit for their products. Together, those partnerships represented <strong>seven figures in cumulative brand deal volume</strong> and helped brands increase conversions through relevant YouTube integrations.</p>
           </article>
           <article class="story-step">
             <span class="story-step-number">03 / Beyond finance</span>
@@ -189,36 +171,41 @@ story.append(
         """,
     )
 )
-story.insert_after(
+brand_partners = fragment(
+    about,
+    """
+    <div class="brand-partners" aria-label="Selected brand partnerships">
+      <p class="section-kicker">Selected brand partnerships</p>
+      <div class="brand-logo-grid">
+        <div class="brand-logo"><img src="../partners/public.png" alt="Public.com"></div>
+        <div class="brand-logo"><img src="../partners/expressvpn.png" alt="ExpressVPN"></div>
+        <div class="brand-logo"><img src="../partners/interactivebrokers.png" alt="Interactive Brokers"></div>
+        <div class="brand-logo"><img src="../partners/lmnt.png" alt="LMNT"></div>
+      </div>
+    </div>
+    """,
+).div
+story.insert_after(brand_partners)
+brand_partners.insert_after(
     fragment(
         about,
         """
         <div class="featured-channels" id="featured-channels">
-          <p class="section-kicker">Featured Channels</p>
-          <h3>See the work for yourself.</h3>
-          <p class="featured-intro">Public examples of channels Caleb has founded or built. They illustrate our publishing experience, not client results.</p>
-          <div class="channel-grid">
-            <a class="channel-card" href="https://www.youtube.com/@casgains" target="_blank" rel="noopener noreferrer" aria-label="Visit Casgains Academy on YouTube">
-              <img src="../channels/casgains.jpg" alt="Casgains Academy channel avatar" width="64" height="64">
-              <span class="channel-detail"><strong>Casgains Academy</strong><small>Finance &amp; economics analysis</small><span>Long-form videos with more than 50 million views, and the foundation for a paid research offering.</span><em>View channel ↗</em></span>
+          <h3>Selected featured channels</h3>
+          <p class="featured-intro">Channels we've founded and operated.</p>
+          <div class="channel-logo-grid">
+            <a class="channel-logo" href="https://www.youtube.com/@casgains" target="_blank" rel="noopener noreferrer" aria-label="Visit Casgains Academy on YouTube">
+              <img src="../channels/casgains.jpg" alt="" width="72" height="72"><span>Casgains Academy</span><span class="channel-arrow" aria-hidden="true">↗</span>
             </a>
-            <a class="channel-card" href="https://www.youtube.com/@calebpowerlifter" target="_blank" rel="noopener noreferrer" aria-label="Visit Caleb Chan on YouTube">
-              <img src="../channels/caleb.jpg" alt="Caleb Chan channel avatar" width="64" height="64">
-              <span class="channel-detail"><strong>Caleb Chan <small>@calebpowerlifter</small></strong><small>Fitness &amp; creator-led content</small><span>A channel built around Caleb's interests and on-camera perspective, reaching an audience beyond finance.</span><em>View channel ↗</em></span>
+            <a class="channel-logo" href="https://www.youtube.com/@calebpowerlifter" target="_blank" rel="noopener noreferrer" aria-label="Visit Caleb Chan on YouTube">
+              <img src="../channels/caleb.jpg" alt="" width="72" height="72"><span>Caleb Chan <small>@calebpowerlifter</small></span><span class="channel-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
         """,
     )
 )
-founder_photo = about.select_one("#founder .founder-photo")
-assert founder_photo is not None
-founder_photo["src"] = "../team/caleb-x.jpg"
-set_text(
-    about,
-    "#founder .founder-quote",
-    "“I've spent eight years building channels across finance, fitness, and other niches. That work taught me that going viral takes skill: understanding an audience, finding the right idea, and making a video that delivers on its promise. We've applied those lessons repeatedly across very different subjects. Virelox brings that experience and our production team to your channel. Your expertise leads; we handle the work behind it. If we don't think we're the right fit, we'll tell you.”",
-)
+about.select_one("#founder").decompose()
 set_text(
     about,
     ".cta-section .cta-inner > p:first-of-type",
