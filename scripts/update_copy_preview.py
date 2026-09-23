@@ -101,6 +101,7 @@ set_text(
     "#contact .cta-inner > p:first-of-type",
     "Tell us who you are, who you want to reach, and what you want YouTube to do for your brand. We'll review the opportunity and outline the topics, audience questions, and first videos we'd explore together.",
 )
+set_text(home, "#contact h2", "Start with a Free Discovery Call")
 home.select_one("#contact textarea")["placeholder"] = "What should YouTube do for your brand?"
 home.select_one("meta[name=description]")["content"] = (
     "Virelox Media develops educational YouTube channels for founders, experts, "
@@ -207,6 +208,7 @@ set_text(
     ".cta-section .cta-inner > p:first-of-type",
     "Tell us what you know, who you want to reach, and what you hope to build on YouTube. We'll discuss the opportunity and the first videos we would consider making together.",
 )
+set_text(about, ".cta-section h2", "Start with a Free Discovery Call")
 about.select_one("meta[name=description]")["content"] = (
     "The story behind Virelox Media, from Casgains Academy and creator partnerships "
     "to a YouTube production team building educational channels for clients."
