@@ -153,9 +153,9 @@ story.append(
             <p>Caleb founded <a href="https://www.youtube.com/@casgains" target="_blank" rel="noopener noreferrer">Casgains Academy</a>, where he learned to make in-depth finance and economic analysis resonate on YouTube. Its long-form videos generated <strong>more than 50 million views</strong>. He also developed a Patreon membership offering deeper stock and portfolio analysis, alongside custom tools for tracking potential investments and examining valuation metrics.</p>
           </article>
           <article class="story-step">
-            <span class="story-step-number">02 / Creator partnerships</span>
+            <span class="story-step-number">02 / Earlier creator partnerships</span>
             <h3>Matching brands with audiences</h3>
-            <p>Through Casgains Media, we connected <strong>15+ brands</strong> with creators whose audiences were a natural fit for their products. Together, those partnerships represented <strong>seven figures in cumulative brand deal volume</strong> and helped brands increase conversions through relevant YouTube integrations.</p>
+            <p>In our earlier work through Casgains Media, we connected <strong>15+ brands</strong>, including Public.com, ExpressVPN, Interactive Brokers, and LMNT, with creators whose audiences were a natural fit for their products. Those creator partnerships represented <strong>seven figures in cumulative brand deal volume</strong> and helped brands increase conversions through relevant YouTube integrations.</p>
           </article>
           <article class="story-step">
             <span class="story-step-number">03 / Beyond finance</span>
@@ -171,22 +171,7 @@ story.append(
         """,
     )
 )
-brand_partners = fragment(
-    about,
-    """
-    <div class="brand-partners" aria-label="Selected brand partnerships">
-      <p class="section-kicker">Selected brand partnerships</p>
-      <div class="brand-logo-grid">
-        <div class="brand-logo"><img src="../partners/public.png" alt="Public.com"></div>
-        <div class="brand-logo"><img src="../partners/expressvpn.png" alt="ExpressVPN"></div>
-        <div class="brand-logo"><img src="../partners/interactivebrokers.png" alt="Interactive Brokers"></div>
-        <div class="brand-logo"><img src="../partners/lmnt.png" alt="LMNT"></div>
-      </div>
-    </div>
-    """,
-).div
-story.insert_after(brand_partners)
-brand_partners.insert_after(
+story.insert_after(
     fragment(
         about,
         """
