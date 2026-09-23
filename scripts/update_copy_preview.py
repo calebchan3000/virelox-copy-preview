@@ -144,19 +144,25 @@ about_intro[1].string = (
     "Today, we use that experience to build educational YouTube channels around our clients' expertise. "
     "You bring the knowledge and point of view; we handle the work from research through publishing."
 )
-about.select_one("#about-header .model-inner").append(
+about.select_one("#how-we-work").decompose()
+set_text(about, "#story .model-statement", "From one finance channel to a YouTube production team.")
+story_kicker = about.select_one("#story .model-kicker")
+story_statement = about.select_one("#story .model-statement")
+story_heading = about.new_tag("div", attrs={"class": "story-heading"})
+story_kicker.insert_before(story_heading)
+story_heading.append(story_kicker.extract())
+story_heading.append(story_statement.extract())
+story_heading.append(
     fragment(
         about,
         """
         <figure class="about-feature">
-          <img src="../team/caleb-creator-awards.jpg" alt="Caleb Chan seated with multiple YouTube Creator Awards" width="1200" height="784" fetchpriority="high">
+          <img src="../team/caleb-creator-awards.jpg" alt="Caleb Chan seated with multiple YouTube Creator Awards" width="1200" height="784" loading="lazy">
           <figcaption><strong>Caleb Chan</strong><span>Founder, Virelox Media</span></figcaption>
         </figure>
         """,
     )
 )
-about.select_one("#how-we-work").decompose()
-set_text(about, "#story .model-statement", "From one finance channel to a YouTube production team.")
 story = about.select_one("#story .story-copy")
 assert story is not None
 story.clear()
