@@ -7,6 +7,7 @@ Next.js hydration data. Run from the repository root with beautifulsoup4.
 
 from __future__ import annotations
 
+import hashlib
 import subprocess
 from pathlib import Path
 
@@ -41,7 +42,12 @@ def finalize(soup: BeautifulSoup, path: str) -> None:
         script.decompose()
     for link in soup.find_all("link", attrs={"as": "script"}):
         link.decompose()
-    css = soup.new_tag("link", rel="stylesheet", href="/virelox-copy-preview/copy-enhancements.css")
+    css_digest = hashlib.sha256((ROOT / "copy-enhancements.css").read_bytes()).hexdigest()[:10]
+    css = soup.new_tag(
+        "link",
+        rel="stylesheet",
+        href=f"/virelox-copy-preview/copy-enhancements.css?v={css_digest}",
+    )
     soup.head.append(css)
     js = soup.new_tag("script", src="/virelox-copy-preview/copy-preview.js", defer=True)
     soup.body.append(js)
