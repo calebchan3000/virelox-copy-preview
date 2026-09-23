@@ -1,0 +1,12 @@
+{
+  "name": "virelox-cloudflare",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build_cloudflare.mjs",
+    "dev": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
