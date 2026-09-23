@@ -137,6 +137,17 @@ about_intro[1].string = (
     "Today, we use that experience to build educational YouTube channels around our clients' expertise. "
     "You bring the knowledge and point of view; we handle the work from research through publishing."
 )
+about.select_one("#about-header").insert_after(
+    fragment(
+        about,
+        """
+        <figure class="about-feature">
+          <img src="../team/caleb-creator-awards.jpg" alt="Caleb Chan seated with multiple YouTube Creator Awards" width="1200" height="784" fetchpriority="high">
+          <figcaption><strong>Caleb Chan</strong><span>Founder, Virelox Media</span></figcaption>
+        </figure>
+        """,
+    )
+)
 about.select_one("#how-we-work").decompose()
 set_text(about, "#story .model-statement", "From one finance channel to a YouTube production team.")
 story = about.select_one("#story .story-copy")
